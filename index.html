@@ -1,41 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menú Horizontal</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Preview Menú Avanzado Roblox</title>
 <style>
-    body { background: #1e1e1e; color: white; font-family: Arial, sans-serif; margin: 0; }
-    .control-panel { background: #191919; width: 250px; height: 150px; margin: 20px auto; padding: 10px; border-top: 3px solid red; text-align: center; border-radius: 8px; }
-    .control-panel button { width: 90%; margin: 5px 0; padding: 8px; background: #333; color: white; border: none; cursor: pointer; border-radius: 6px; transition: background 0.3s; }
-    .control-panel button:hover { background: #444; }
-    .menu-container { display: flex; gap: 20px; padding: 20px; justify-content: center; flex-wrap: nowrap; }
-    .frame { background: #191919; padding: 10px; border-radius: 8px; border-top: 3px solid red; min-width: 150px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-    .player-list { width: 250px; height: 300px; overflow-y: auto; }
-    .config { width: 300px; height: 300px; }
-    .style-frame { width: 250px; height: 150px; }
-    .preview-frame { width: 150px; height: 200px; text-align: center; }
-    .preview-box { background: #333; width: 100%; height: calc(100% - 40px); margin-top: 5px; border-radius: 8px; }
+  body {
+    background-color: #1e1e1e;
+    color: white;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  #menu {
+    width: 400px;
+    background-color: #1a1a1a;
+    border-radius: 6px;
+    box-shadow: 0 0 15px #000000aa;
+  }
+  #menu header {
+    background-color: #2d2d2d;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 6px 6px 0 0;
+  }
+  #tabs {
+    display: flex;
+    background-color: #141414;
+  }
+  #tabs button {
+    flex: 1;
+    background: #3c3c3c;
+    border: none;
+    color: white;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  #tabs button.active {
+    background-color: #5a5a5a;
+  }
+  #content {
+    padding: 20px;
+    background-color: #2a2a2a;
+    min-height: 120px;
+    border-radius: 0 0 6px 6px;
+  }
 </style>
-<script>
-function toggle(id){
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === 'none' ? 'block' : 'none';
-}
-</script>
 </head>
 <body>
-    <div class="control-panel">
-        <button onclick="toggle('players')">Jugadores</button>
-        <button onclick="toggle('config')">Configuración</button>
-        <button onclick="toggle('style')">Estilo</button>
-        <button onclick="toggle('preview')">Vista previa</button>
+  <div id="menu">
+    <header>Menú Avanzado</header>
+    <div id="tabs">
+      <button data-tab="settings" class="active">Configuración</button>
+      <button data-tab="info">Información</button>
+      <button data-tab="credits">Créditos</button>
     </div>
-    <div class="menu-container">
-        <div class="frame player-list" id="players"><h3>Jugadores</h3><div>Jugador1</div><div>Jugador2</div></div>
-        <div class="frame config" id="config"><h3>Opciones Visuales</h3><input type="checkbox"> Activar efecto visual</div>
-        <div class="frame style-frame" id="style"><h3>Tema del Menú</h3><button>Azul</button><button style="background: purple;">Morado</button></div>
-        <div class="frame preview-frame" id="preview"><h3>Vista previa</h3><div class="preview-box"></div></div>
+    <div id="content">
+      <div data-content="settings">
+        Opciones de configuración aquí...
+      </div>
+      <div data-content="info" style="display:none;">
+        Información del juego y del jugador.
+      </div>
+      <div data-content="credits" style="display:none;">
+        Creado por TuNombre - 2025
+      </div>
     </div>
+  </div>
+
+<script>
+  const tabs = document.querySelectorAll("#tabs button");
+  const contents = document.querySelectorAll("#content > div");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Quitar active a todos
+      tabs.forEach(b => b.classList.remove("active"));
+      // Mostrar solo contenido de pestaña
+      contents.forEach(c => c.style.display = "none");
+
+      // Activar seleccionado
+      tab.classList.add("active");
+      const id = tab.getAttribute("data-tab");
+      document.querySelector(`[data-content="${id}"]`).style.display = "block";
+    });
+  });
+</script>
 </body>
 </html>
