@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menú de Configuración</title>
+<title>Menú Horizontal</title>
 <style>
-    body { background: #1e1e1e; color: white; font-family: Arial, sans-serif; }
-    .control-panel { background: #191919; width: 250px; height: 150px; margin: 20px auto; padding: 10px; border-top: 3px solid red; text-align: center; }
-    .control-panel button { width: 90%; margin: 5px 0; padding: 8px; background: #333; color: white; border: none; cursor: pointer; border-radius: 4px; }
+    body { background: #1e1e1e; color: white; font-family: Arial, sans-serif; margin: 0; }
+    .control-panel { background: #191919; width: 250px; height: 150px; margin: 20px auto; padding: 10px; border-top: 3px solid red; text-align: center; border-radius: 8px; }
+    .control-panel button { width: 90%; margin: 5px 0; padding: 8px; background: #333; color: white; border: none; cursor: pointer; border-radius: 6px; transition: background 0.3s; }
+    .control-panel button:hover { background: #444; }
     .menu-container { display: flex; gap: 20px; padding: 20px; justify-content: center; flex-wrap: nowrap; }
-    .frame { background: #191919; padding: 10px; border-radius: 8px; border-top: 3px solid red; }
+    .frame { background: #191919; padding: 10px; border-radius: 8px; border-top: 3px solid red; min-width: 150px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     .player-list { width: 250px; height: 300px; overflow-y: auto; }
     .config { width: 300px; height: 300px; }
     .style-frame { width: 250px; height: 150px; }
