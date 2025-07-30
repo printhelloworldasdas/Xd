@@ -6,10 +6,10 @@
 <title>Menú de Configuración</title>
 <style>
     body { background: #1e1e1e; color: white; font-family: Arial, sans-serif; }
-    .menu-container { display: flex; gap: 20px; padding: 20px; flex-wrap: wrap; justify-content: center; }
-    .control-panel { background: #191919; width: 200px; height: 150px; padding: 10px; border-top: 3px solid red; text-align: center; }
+    .control-panel { background: #191919; width: 250px; height: 150px; margin: 20px auto; padding: 10px; border-top: 3px solid red; text-align: center; }
     .control-panel button { width: 90%; margin: 5px 0; padding: 8px; background: #333; color: white; border: none; cursor: pointer; border-radius: 4px; }
-    .frame { background: #191919; padding: 10px; border-radius: 8px; position: relative; border-top: 3px solid red; }
+    .menu-container { display: flex; gap: 20px; padding: 20px; justify-content: center; flex-wrap: nowrap; }
+    .frame { background: #191919; padding: 10px; border-radius: 8px; border-top: 3px solid red; }
     .player-list { width: 250px; height: 300px; overflow-y: auto; }
     .config { width: 300px; height: 300px; }
     .style-frame { width: 250px; height: 150px; }
@@ -24,13 +24,11 @@ function toggle(id){
 </script>
 </head>
 <body>
-    <div class="menu-container">
-        <div class="control-panel">
-            <button onclick="toggle('players')">Jugadores</button>
-            <button onclick="toggle('config')">Configuración</button>
-            <button onclick="toggle('style')">Estilo</button>
-            <button onclick="toggle('preview')">Vista previa</button>
-        </div>
+    <div class="control-panel">
+        <button onclick="toggle('players')">Jugadores</button>
+        <button onclick="toggle('config')">Configuración</button>
+        <button onclick="toggle('style')">Estilo</button>
+        <button onclick="toggle('preview')">Vista previa</button>
     </div>
     <div class="menu-container">
         <div class="frame player-list" id="players"><h3>Jugadores</h3><div>Jugador1</div><div>Jugador2</div></div>
