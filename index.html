@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú de Configuración</title>
+<style>
+    body {
+        background: #1e1e1e;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+    .menu-container {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+    .title {
+        background: #191919;
+        color: white;
+        font-size: 24px;
+        padding: 10px;
+        width: 400px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .frame {
+        background: #191919;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+    .frame h3 {
+        margin-top: 0;
+        font-size: 18px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 5px;
+    }
+    .player-list {
+        width: 250px;
+        height: 300px;
+        overflow-y: auto;
+    }
+    .player-list div {
+        padding: 5px;
+        border-bottom: 1px solid #333;
+    }
+    .config {
+        width: 300px;
+        height: 300px;
+    }
+    .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .checkbox input {
+        width: 20px;
+        height: 20px;
+    }
+    .slider-container {
+        margin-top: 20px;
+    }
+    .style-frame {
+        width: 250px;
+        height: 150px;
+    }
+    .style-frame button {
+        background: #0064ff;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .preview-frame {
+        width: 150px;
+        height: 200px;
+        text-align: center;
+    }
+    .preview-box {
+        background: #333;
+        width: 100%;
+        height: calc(100% - 40px);
+        margin-top: 5px;
+        border-radius: 8px;
+    }
+</style>
+</head>
+<body>
+    <div class="title">🎮 Menú de Configuración</div>
+    <div class="menu-container">
+        <!-- Lista de jugadores -->
+        <div class="frame player-list">
+            <h3>Jugadores</h3>
+            <div>Jugador1</div>
+            <div>Jugador2</div>
+            <div>Jugador3</div>
+            <div>Jugador4</div>
+            <div>Jugador5</div>
+        </div>
+
+        <!-- Configuración -->
+        <div class="frame config">
+            <h3>Opciones Visuales</h3>
+            <div class="checkbox">
+                <input type="checkbox" id="chk">
+                <label for="chk">Activar efecto visual</label>
+            </div>
+            <div class="slider-container">
+                <label for="slider">Intensidad:</label><br>
+                <input type="range" id="slider" min="0" max="100" value="50">
+            </div>
+        </div>
+
+        <!-- Estilo -->
+        <div class="frame style-frame">
+            <h3>Tema del Menú</h3>
+            <button>Azul</button>
+            <button style="background: purple;">Morado</button>
+        </div>
+
+        <!-- Vista previa -->
+        <div class="frame preview-frame">
+            <h3>Vista previa</h3>
+            <div class="preview-box"></div>
+        </div>
+    </div>
+</body>
+</html>
