@@ -1,96 +1,174 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Preview Menú Avanzado Roblox</title>
-<style>
-  body {
-    background-color: #1e1e1e;
-    color: white;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  #menu {
-    width: 400px;
-    background-color: #1a1a1a;
-    border-radius: 6px;
-    box-shadow: 0 0 15px #000000aa;
-  }
-  #menu header {
-    background-color: #2d2d2d;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 18px;
-    text-align: center;
-    border-radius: 6px 6px 0 0;
-  }
-  #tabs {
-    display: flex;
-    background-color: #141414;
-  }
-  #tabs button {
-    flex: 1;
-    background: #3c3c3c;
-    border: none;
-    color: white;
-    padding: 10px 0;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-  }
-  #tabs button.active {
-    background-color: #5a5a5a;
-  }
-  #content {
-    padding: 20px;
-    background-color: #2a2a2a;
-    min-height: 120px;
-    border-radius: 0 0 6px 6px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Aimware Menu</title>
+  <style>
+    body {
+      background: #1e1e1e;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .menu {
+      width: 480px;
+      background: #2b0000;
+      border: 3px solid red;
+      padding: 10px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .tab {
+      background: #500000;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .section {
+      display: flex;
+      gap: 10px;
+    }
+
+    .column {
+      flex: 1;
+      background: #1b1b1b;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #ff3333;
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin: 4px 0;
+      font-size: 13px;
+    }
+
+    select, input[type="range"] {
+      width: 100%;
+      margin: 2px 0 8px 0;
+    }
+
+    .keybind {
+      background: #2a2a2a;
+      padding: 3px 6px;
+      display: inline-block;
+      margin: 4px 0;
+    }
+
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 3px 0;
+    }
+
+    .toggle input {
+      accent-color: lime;
+    }
+
+    .hotkey {
+      background: #333;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
-  <div id="menu">
-    <header>Menú Avanzado</header>
-    <div id="tabs">
-      <button data-tab="settings" class="active">Configuración</button>
-      <button data-tab="info">Información</button>
-      <button data-tab="credits">Créditos</button>
+  <div class="menu">
+    <div class="tabs">
+      <div class="tab">Aimbot</div>
+      <div class="tab">Visuals</div>
+      <div class="tab">Misc</div>
+      <div class="tab">Settings</div>
     </div>
-    <div id="content">
-      <div data-content="settings">
-        Opciones de configuración aquí...
+
+    <div class="section">
+      <div class="column">
+        <div class="section-title">Legitbot</div>
+        <div class="toggle"><input type="checkbox" checked> Enabled</div>
+        <div class="toggle"><input type="checkbox" checked> Silent</div>
+        <div class="toggle"><input type="checkbox" checked> Team Check</div>
+        <div class="toggle"><input type="checkbox"> Visibility Check</div>
+
+        <label>Keybind <span class="keybind">[ MB1 ]</span></label>
+
+        <label>Hitbox</label>
+        <select>
+          <option>Head, Chest</option>
+        </select>
+
+        <label>Hitbox Priority</label>
+        <select>
+          <option>FOV</option>
+        </select>
+
+        <label>Target Priority</label>
+        <select>
+          <option>FOV</option>
+        </select>
+
+        <label>Field of View</label>
+        <div class="slider-label">
+          <span>0°</span><span>94°</span>
+        </div>
+        <input type="range" min="0" max="180" value="94">
+
+        <label>Distance</label>
+        <div class="slider-label">
+          <span>0</span><span>2048 studs</span>
+        </div>
+        <input type="range" min="0" max="2048" value="2048">
+
+        <label>Smoothness</label>
+        <div class="slider-label">
+          <span>1</span>
+        </div>
+        <input type="range" min="1" max="10" value="1">
       </div>
-      <div data-content="info" style="display:none;">
-        Información del juego y del jugador.
-      </div>
-      <div data-content="credits" style="display:none;">
-        Creado por TuNombre - 2025
+
+      <div class="column">
+        <div class="section-title">Anti Aim</div>
+        <div class="toggle"><input type="checkbox"> Enabled</div>
+
+        <label>Pitch</label>
+        <select><option>Default</option></select>
+
+        <label>Yaw</label>
+        <select><option>Default</option></select>
+
+        <label>Yaw Strength</label>
+        <input type="range" min="0" max="100" value="50">
+
+        <div class="toggle"><input type="checkbox" checked> Remove Head Hitbox</div>
+        <div class="toggle"><input type="checkbox"> Disable While Climbing</div>
+
+        <label>Manual Forward <span class="hotkey">[ Up ]</span></label>
+        <label>Manual Left <span class="hotkey">[ Left ]</span></label>
+        <label>Manual Right <span class="hotkey">[ Right ]</span></label>
+        <label>Manual Backward <span class="hotkey">[ Down ]</span></label>
+        <label>Manual Spin <span class="hotkey">[ BackSlash ]</span></label>
       </div>
     </div>
   </div>
-
-<script>
-  const tabs = document.querySelectorAll("#tabs button");
-  const contents = document.querySelectorAll("#content > div");
-
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Quitar active a todos
-      tabs.forEach(b => b.classList.remove("active"));
-      // Mostrar solo contenido de pestaña
-      contents.forEach(c => c.style.display = "none");
-
-      // Activar seleccionado
-      tab.classList.add("active");
-      const id = tab.getAttribute("data-tab");
-      document.querySelector(`[data-content="${id}"]`).style.display = "block";
-    });
-  });
-</script>
 </body>
 </html>
