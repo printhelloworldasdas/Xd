@@ -10,11 +10,12 @@
         font-family: Arial, sans-serif;
     }
     .menu {
-        width: 400px;
+        width: 420px;
         background: #2b0000;
         color: white;
         border: 2px solid red;
         padding: 10px;
+        border-radius: 8px;
     }
     .menu h2 {
         text-align: center;
@@ -26,6 +27,7 @@
         background: #900000;
         padding: 5px;
         margin-bottom: 10px;
+        border-radius: 5px;
     }
     .tabs button {
         background: none;
@@ -33,6 +35,15 @@
         color: white;
         cursor: pointer;
         font-weight: bold;
+    }
+    .tabs button.active {
+        text-decoration: underline;
+    }
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active {
+        display: block;
     }
     .section {
         display: flex;
@@ -43,6 +54,7 @@
         background: #1a1a1a;
         padding: 8px;
         border: 1px solid #900000;
+        border-radius: 5px;
     }
     .column h3 {
         text-align: center;
@@ -53,11 +65,16 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        font-size: 14px;
     }
     .checkbox {
         width: 15px;
         height: 15px;
         border: 1px solid white;
+        cursor: pointer;
+    }
+    .checkbox.active {
+        background: green;
     }
     select, input[type=range] {
         width: 100%;
@@ -67,6 +84,12 @@
         background: #333;
         padding: 2px 5px;
         border: 1px solid white;
+        border-radius: 3px;
+    }
+    .slider-value {
+        font-size: 12px;
+        color: #aaa;
+        margin-left: 5px;
     }
 </style>
 </head>
@@ -75,63 +98,115 @@
 <div class="menu">
     <h2>Aimware</h2>
     <div class="tabs">
-        <button>Aimbot</button>
-        <button>Visuals</button>
-        <button>Misc</button>
-        <button>Settings</button>
+        <button class="active" data-tab="aimbot">Aimbot</button>
+        <button data-tab="visuals">Visuals</button>
+        <button data-tab="misc">Misc</button>
+        <button data-tab="settings">Settings</button>
     </div>
-    <div class="section">
-        <div class="column">
-            <h3>Legitbot</h3>
-            <div class="option">Enabled <div class="checkbox" style="background: green;"></div></div>
-            <div class="option">Silent <div class="checkbox" style="background: green;"></div></div>
-            <div class="option">Team Check <div class="checkbox" style="background: red;"></div></div>
-            <div class="option">Visibility Check <div class="checkbox" style="background: darkred;"></div></div>
-            <div class="option">Keybind <span class="keybind">[ MB1 ]</span></div>
-            <div class="option">Hitbox
-                <select>
-                    <option>Head, Chest</option>
-                </select>
+
+    <div id="aimbot" class="tab-content active">
+        <div class="section">
+            <!-- Left Column -->
+            <div class="column">
+                <h3>Legitbot</h3>
+                <div class="option">Enabled <div class="checkbox"></div></div>
+                <div class="option">Silent <div class="checkbox"></div></div>
+                <div class="option">Team Check <div class="checkbox"></div></div>
+                <div class="option">Visibility Check <div class="checkbox"></div></div>
+                <div class="option">Keybind <span class="keybind">[ MB1 ]</span></div>
+                <div class="option">Hitbox
+                    <select>
+                        <option>Head, Chest</option>
+                    </select>
+                </div>
+                <div class="option">Hitbox Priority
+                    <select>
+                        <option>FOV</option>
+                    </select>
+                </div>
+                <div class="option">Target Priority
+                    <select>
+                        <option>FOV</option>
+                    </select>
+                </div>
+                <div class="option">Field of View 
+                    <input type="range" min="0" max="180" value="94" class="slider">
+                    <span class="slider-value">94°</span>
+                </div>
+                <div class="option">Distance 
+                    <input type="range" min="0" max="5000" value="2048" class="slider">
+                    <span class="slider-value">2048 studs</span>
+                </div>
+                <div class="option">Smoothness 
+                    <input type="range" min="0" max="10" value="1" class="slider">
+                    <span class="slider-value">1</span>
+                </div>
             </div>
-            <div class="option">Hitbox Priority
-                <select>
-                    <option>FOV</option>
-                </select>
+
+            <!-- Right Column -->
+            <div class="column">
+                <h3>Anti Aim</h3>
+                <div class="option">Enabled <div class="checkbox"></div></div>
+                <div class="option">Pitch
+                    <select>
+                        <option>Default</option>
+                    </select>
+                </div>
+                <div class="option">Yaw
+                    <select>
+                        <option>Default</option>
+                    </select>
+                </div>
+                <div class="option">Yaw Strength 
+                    <input type="range" min="0" max="100" value="50" class="slider">
+                    <span class="slider-value">50</span>
+                </div>
+                <div class="option">Remove Head Hitbox <div class="checkbox"></div></div>
+                <div class="option">Disable While Climbing <div class="checkbox"></div></div>
+                <div class="option">Manual Forward <span class="keybind">[ Up ]</span></div>
+                <div class="option">Manual Left <span class="keybind">[ Left ]</span></div>
+                <div class="option">Manual Right <span class="keybind">[ Right ]</span></div>
+                <div class="option">Manual Backward <span class="keybind">[ Down ]</span></div>
+                <div class="option">Manual Spin <span class="keybind">[ BackSlash ]</span></div>
             </div>
-            <div class="option">Target Priority
-                <select>
-                    <option>FOV</option>
-                </select>
-            </div>
-            <div class="option">Field of View <input type="range" value="94"></div>
-            <div class="option">Distance <input type="range" value="2048"></div>
-            <div class="option">Smoothness <input type="range" value="1"></div>
-            <div class="option">Hitchance</div>
-        </div>
-        <div class="column">
-            <h3>Anti Aim</h3>
-            <div class="option">Enabled <div class="checkbox" style="background: red;"></div></div>
-            <div class="option">Pitch
-                <select>
-                    <option>Default</option>
-                </select>
-            </div>
-            <div class="option">Yaw
-                <select>
-                    <option>Default</option>
-                </select>
-            </div>
-            <div class="option">Yaw Strength <input type="range" value="50"></div>
-            <div class="option">Remove Head Hitbox <div class="checkbox" style="background: green;"></div></div>
-            <div class="option">Disable While Climbing <div class="checkbox" style="background: darkred;"></div></div>
-            <div class="option">Manual Forward <span class="keybind">[ Up ]</span></div>
-            <div class="option">Manual Left <span class="keybind">[ Left ]</span></div>
-            <div class="option">Manual Right <span class="keybind">[ Right ]</span></div>
-            <div class="option">Manual Backward <span class="keybind">[ Down ]</span></div>
-            <div class="option">Manual Spin <span class="keybind">[ BackSlash ]</span></div>
         </div>
     </div>
+
+    <!-- Otros tabs (vacíos de momento) -->
+    <div id="visuals" class="tab-content">Visuals config here</div>
+    <div id="misc" class="tab-content">Misc config here</div>
+    <div id="settings" class="tab-content">Settings config here</div>
 </div>
+
+<script>
+    // Tabs
+    document.querySelectorAll('.tabs button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(btn.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Checkboxes
+    document.querySelectorAll('.checkbox').forEach(box => {
+        box.addEventListener('click', () => {
+            box.classList.toggle('active');
+        });
+    });
+
+    // Sliders
+    document.querySelectorAll('.slider').forEach(slider => {
+        slider.addEventListener('input', () => {
+            const value = slider.value;
+            const label = slider.nextElementSibling;
+            if (slider.max == 180) label.textContent = `${value}°`;
+            else if (slider.max == 5000) label.textContent = `${value} studs`;
+            else label.textContent = value;
+        });
+    });
+</script>
 
 </body>
 </html>
